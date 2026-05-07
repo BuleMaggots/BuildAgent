@@ -22,6 +22,7 @@ TraceEventType = Literal[
     "state_updated",
     "run_finished",
 ]
+DEEPSEEK = "deepseek-v4-flash"
 
 
 def utc_now_iso() -> str:
@@ -40,7 +41,7 @@ class AgentDefinition(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     description: str = Field(min_length=1, max_length=200)
     system_prompt: str = Field(min_length=1, max_length=2000)
-    model: str | None = None
+    model: str | None = DEEPSEEK
     skill_names: list[str] = Field(default_factory=list)
     builtin_capabilities: list[BuiltinCapability] = Field(default_factory=list)
 

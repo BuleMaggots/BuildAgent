@@ -2,7 +2,7 @@ from collections.abc import Callable
 from typing import TypedDict
 
 from langgraph.constants import START, END
-
+from utils.get_config import workflow_get_config_yaml
 from llm import call_llm, run_agent
 from simple_agent.prompts import fallback_plan_tasks, build_router_prompt, fallback_route_keyword, \
     build_finalize_prompt, build_fallback_response
@@ -31,9 +31,6 @@ class PlannerState(TypedDict, total=False):
     task_reports: list[str] #任务报告
     combined_report: str    #整体报告
     ai_message: str     #AI消息
-
-
-
 
 #搭建工作流
 def _compile_planner_app(
@@ -336,11 +333,6 @@ def run_planner_executor(
 
 if __name__ == "__main__":
     store = Store()
-    workflow = WorkflowDefinition(
-        id="planner_executor",
-        name="Planner Executor",
-        type="planner_executor",
-        specialist_agent_ids=["product_manager","designer","developer"],
-    )
+    workflow = workflow_get_config_yaml("planner_executor")
     user_input = input("User input: ")
     run_planner_executor(store,workflow,user_input)
