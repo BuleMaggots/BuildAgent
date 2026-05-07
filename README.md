@@ -1,6 +1,6 @@
 # Simple Agent Template
 
-Minimal deployment template for a LangChain agent built with `create_agent(...)`.
+Minimal deployment template for a Langgraph agent built with `agent(...)`.
 
 ## What this template gives you
 
