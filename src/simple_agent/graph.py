@@ -2,14 +2,14 @@ from collections.abc import Callable
 from typing import TypedDict
 
 from langgraph.constants import START, END
-from utils.get_config import workflow_get_config_yaml
-from llm import call_llm, run_agent
+from simple_agent.utils.get_config import workflow_get_config_yaml
+from simple_agent.llm import call_llm, run_agent
 from simple_agent.prompts import fallback_plan_tasks, build_router_prompt, fallback_route_keyword, \
     build_finalize_prompt, build_fallback_response
-from store import Store
-from schemas import WorkflowDefinition, AgentDefinition, WorkflowRunResponse, RunArtifacts
+from simple_agent.store import Store
+from simple_agent.schemas import WorkflowDefinition, AgentDefinition, WorkflowRunResponse, RunArtifacts
 from langgraph.graph import StateGraph
-from prompts import build_plan_tasks_prompt
+from simple_agent.prompts import build_plan_tasks_prompt
 
 PLANNER_NODE = "planner_core"
 VALIDATOR_NODE = "planner_validator"

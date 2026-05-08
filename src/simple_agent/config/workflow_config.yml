@@ -1,6 +1,9 @@
-planner_executor: {
-                    id: planner_executor,
-                    name: planner_executor,
-                    type: planner_executor,
-                    specialist_agent_ids:["product_manager","designer","developer"]
-}
+planner_executor:
+  id: planner_executor
+  name: planner_executor
+  type: planner_executor
+  specialist_agent_ids:
+    - product_manager
+    - designer
+    - developer
+  finalizer_enabled: true
