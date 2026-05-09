@@ -14,7 +14,6 @@ def fs_root() -> dict:
         "structure": {目录结构列表}
     }
     """
-    print("fs_root")
     root_path = get_abs_path("output")
     if not os.path.exists(root_path):
         return f"文件夹 {root_path} 不存在"
@@ -34,7 +33,6 @@ def fs_root() -> dict:
         return tree
 
     structure = build_tree(root_path)
-    print(structure)
     return {
         "root": root_path,
         "structure": structure
@@ -60,7 +58,6 @@ def make_dir(path: str):
     Args:
         path: 目录路径（例如 'C:/dir'）
     """
-    print("make_dir")
     try:
         if os.path.exists(path):
             return f"文件 {path} 已存在"
@@ -79,7 +76,6 @@ def create_file_with_content(path: str, filename: str, suffix: str, content:  st
         suffix:    该的文件后缀（例如 '.txt' 或 '.html'，注意带点）
         content:   要写入的字符串内容
     """
-    print("create_file_with_content")
     try:
         os.makedirs(path, exist_ok=True)
         full_path = os.path.join(path, filename + suffix)
@@ -99,7 +95,6 @@ def append_file_content(path: str, filename: str, suffix: str, content: str):
         suffix:    该文件的后缀（例如 '.txt' 或 '.html'，注意带点）
         content:   要追加的更新内容
     """
-    print("append_file_content")
     try:
         os.makedirs(path, exist_ok=True)
         full_path = os.path.join(path, filename + suffix)
@@ -123,7 +118,6 @@ def read_file_content(path: str, filename: str, suffix: str) -> str:
         filename: 文件名（不含后缀，例如 'example'）
         suffix: 该文件的后缀（例如 '.txt' 或 '.html'，注意带点）
     """
-    print("read_file_content")
     file_path = os.path.join(path, filename + suffix)
     if not os.path.isfile(file_path):
         return f"文件 {file_path} 不存在或不是有效文件"
@@ -143,7 +137,6 @@ def delete_file(path: str, filename: str, suffix: str):
         filename: 要删除的文件名（不含后缀，例如 'example'）
         suffix: 该文件的后缀（例如 '.txt' 或 '.html'，注意带点）
     """
-    print("delete_file")
     file_path = os.path.join(path, filename + suffix)
     if not os.path.isfile(file_path):
         return f"文件 {file_path} 不存在"
@@ -160,7 +153,6 @@ def move(path: str, filename: str, suffix: str, new_path: str):
         suffix: 该文件的后缀（例如 '.txt' 或 '.html'，注意带点）
         new_path: 目标目录路径（例如 './data/new' 或 'C:/myfiles/new'）
     """
-    print("move")
     file = filename + suffix
     source_path = os.path.join(path, file)
     if not os.path.isfile(source_path):
